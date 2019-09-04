@@ -14,7 +14,7 @@ import { LinkService } from './services/link-service.service';
     AppComponent,
     ToolbarComponent,
     FooterComponent,
-    LandingComponent
+    LandingComponent,
   ],
   imports: [
     BrowserModule,

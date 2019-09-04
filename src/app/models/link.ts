@@ -6,17 +6,17 @@ export interface SimpleLink {
 
 export const SAMPLE_LINKS: SimpleLink[]  = [
     {
-        url: 'google.com',
+        url: 'http://www.google.com',
         title: 'Google',
         avgTimeInSeconds: 500,
     },
     {
-        url: 'nyt.com',
+        url: 'http://www.nyt.com',
         title: 'New York Times',
         avgTimeInSeconds: 400,
     },
     {
-        url: 'medium.com',
+        url: 'http://www.medium.com',
         title: 'Medium',
         avgTimeInSeconds: 180,
     }

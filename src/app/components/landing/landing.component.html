@@ -1,5 +1,10 @@
 <div class="landing-content">
     <h1>Have a minute?</h1>
-    <button (click)="getLinkAndNavigate()">Take the minute!</button>
+    <ng-container *ngIf="!showSpinner">
+        <button (click)="getLinkAndNavigate()">Take the minute!</button>
+    </ng-container>
+    <ng-container *ngIf="showSpinner">
+        <p>Finding your content{{dotsObservable | async}}</p>
+    </ng-container>
 </div>
 
