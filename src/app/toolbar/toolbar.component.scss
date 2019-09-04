@@ -1,0 +1,11 @@
+.toolbar-container {
+    display: grid;
+    width: 100%;
+    align-items: center;
+    grid-template-columns: 50px auto 50px;
+    margin: 10px;
+}
+
+.spacer {
+    width: auto;
+}
