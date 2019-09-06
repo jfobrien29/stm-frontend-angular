@@ -19,6 +19,7 @@ import { UserComponent } from './components/user/user.component';
 import { AuthGuard } from './services/auth.guard';
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
+import { FirebaseService } from './services/firebase.service';
 import { UserResolver } from './components/user/user.resolver';
 
 @NgModule({
@@ -40,7 +41,7 @@ import { UserResolver } from './components/user/user.resolver';
     BrowserAnimationsModule,
     ReactiveFormsModule,
   ],
-  providers: [LinkService, AuthGuard, UserResolver, UserService, AuthService],
+  providers: [LinkService, AuthGuard, UserResolver, UserService, AuthService, FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

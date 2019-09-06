@@ -18,7 +18,7 @@ export class LandingComponent implements OnDestroy {
   dots = ['!', '!!', '!!!'];
   dotsObservable = interval(500).pipe(map((value) => this.dots[value % this.dots.length]));
 
-  constructor(private readonly linkService: LinkService, private readonly router: Router) { }
+  constructor(private readonly linkService: LinkService) { }
 
   ngOnDestroy() {
     this.destroyed.next();
@@ -28,9 +28,9 @@ export class LandingComponent implements OnDestroy {
   getLinkAndNavigate() {
     console.log('Finding Link');
 
-    this.linkService.getTargetLink().pipe(takeUntil(this.destroyed), delay(2000)).subscribe((link: SimpleLink) => {
+    this.linkService.getTargetLink().pipe(delay(500), takeUntil(this.destroyed)).subscribe((link: string) => {
       console.log('Link Found, Navigating...', link);
-      window.location.href = link.url;
+      window.location.href = link;
     });
 
     this.showSpinner = true;
