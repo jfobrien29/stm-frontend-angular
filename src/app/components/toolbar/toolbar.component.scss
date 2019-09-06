@@ -1,11 +1,29 @@
+h2 {
+    text-align: right;
+    a {
+        color: white;
+        text-decoration: none;
+    }
+}
+
+p {
+    margin-right: 10px;
+}
+
 .toolbar-container {
     display: grid;
     width: 100%;
     align-items: center;
-    grid-template-columns: 50px auto 50px;
-    margin: 10px;
+    grid-template-columns: 70px auto 100px 70px;
+    background: indigo;
+    color: white;
+    height: 100%;
 }
 
 .spacer {
     width: auto;
+}
+
+#logout, #login { 
+    width: fit-content;
 }

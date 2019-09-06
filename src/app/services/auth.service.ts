@@ -2,25 +2,14 @@ import { Injectable } from "@angular/core";
 import 'rxjs/add/operator/toPromise';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
+import { ReplaySubject } from 'rxjs';
 
 @Injectable()
 export class AuthService {
 
-  constructor(public afAuth: AngularFireAuth) { }
+  readonly userChangeSubject = new ReplaySubject<void>(1);
 
-  doFacebookLogin() {
-    return new Promise<any>((resolve, reject) => {
-      let provider = new firebase.auth.FacebookAuthProvider();
-      this.afAuth.auth
-        .signInWithPopup(provider)
-        .then(res => {
-          resolve(res);
-        }, err => {
-          console.log(err);
-          reject(err);
-        })
-    })
-  }
+  constructor(public afAuth: AngularFireAuth) { }
 
   doGoogleLogin() {
     return new Promise<any>((resolve, reject) => {
@@ -30,6 +19,7 @@ export class AuthService {
       this.afAuth.auth
         .signInWithPopup(provider)
         .then(res => {
+          this.userChange();
           resolve(res);
         }, err => {
           console.log(err);
@@ -42,6 +32,7 @@ export class AuthService {
     return new Promise<any>((resolve, reject) => {
       firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
         .then(res => {
+          this.userChange();
           resolve(res);
         }, err => reject(err))
     })
@@ -51,6 +42,7 @@ export class AuthService {
     return new Promise<any>((resolve, reject) => {
       firebase.auth().signInWithEmailAndPassword(value.email, value.password)
         .then(res => {
+          this.userChange();
           resolve(res);
         }, err => reject(err))
     })
@@ -60,11 +52,16 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       if (firebase.auth().currentUser) {
         this.afAuth.auth.signOut();
+        this.userChange();
         resolve();
       }
       else {
         reject();
       }
     });
+  }
+
+  private userChange() {
+    this.userChangeSubject.next();
   }
 }

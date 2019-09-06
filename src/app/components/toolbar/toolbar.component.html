@@ -1,5 +1,12 @@
 <div class="toolbar-container">
-    <h2>STM</h2>
+    <h2><a id="header-title" routerLink="">STM</a></h2>
     <div class="spacer"></div>
-    <p>ICON</p>
+    <ng-container *ngIf="userLoggedIn">
+        <p>Logged in as {{userName}}!</p>
+        <button id="logout" (click)="logout()" routerLink="">Logout</button>
+    </ng-container>
+    <ng-container *ngIf="!userLoggedIn">
+            <p>Not logged in.</p>
+            <button id="login" routerLink="/login">Login</button>
+    </ng-container>
 </div>

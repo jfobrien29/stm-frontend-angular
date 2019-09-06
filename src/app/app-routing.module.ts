@@ -7,7 +7,7 @@ import { UserComponent } from './components/user/user.component';
 import { AuthGuard } from './services/auth.guard';
 import { UserResolver } from './components/user/user.resolver';
 
-const routes: Routes = [
+const routeConfig: Routes = [
   { path: '', component: LandingComponent },
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
@@ -15,7 +15,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routeConfig, { useHash: false })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
