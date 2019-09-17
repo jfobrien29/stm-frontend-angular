@@ -1,12 +1,15 @@
-<div class="toolbar-container">
+<mat-toolbar class="toolbar-container" color="primary">
     <h2><a id="header-title" routerLink="">STM</a></h2>
+
     <div class="spacer"></div>
+
     <ng-container *ngIf="userLoggedIn">
-        <p>Logged in as {{userName}}!</p>
-        <button id="logout" (click)="logout()" routerLink="">Logout</button>
+        <img class="card-img-top user-image" [src]="userImage" *ngIf="userImage" alt="User image">
+        <img class="card-img-top user-image" src="https://via.placeholder.com/400x300" *ngIf="!userImage" alt="User image">
+        <button mat-button id="logout" (click)="logout()" routerLink="">Logout</button>
     </ng-container>
     <ng-container *ngIf="!userLoggedIn">
-            <p>Not logged in.</p>
-            <button id="login" routerLink="/login">Login</button>
+            <mat-icon aria-hidden="false" aria-label="Example heart icon">person</mat-icon>
+            <button mat-button id="login" routerLink="/login">Login</button>
     </ng-container>
-</div>
+</mat-toolbar>

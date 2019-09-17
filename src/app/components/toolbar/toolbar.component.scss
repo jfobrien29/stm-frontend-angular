@@ -3,27 +3,23 @@ h2 {
     a {
         color: white;
         text-decoration: none;
+        font-size: 30px;
     }
 }
 
-p {
-    margin-right: 10px;
-}
-
-.toolbar-container {
-    display: grid;
-    width: 100%;
-    align-items: center;
-    grid-template-columns: 70px auto 100px 70px;
-    background: indigo;
-    color: white;
-    height: 100%;
-}
-
 .spacer {
-    width: auto;
+    /* This fills the remaining space, by using flexbox. 
+        Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
 }
 
 #logout, #login { 
     width: fit-content;
 }
+
+.user-image {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    border-radius: 50%;
+  }

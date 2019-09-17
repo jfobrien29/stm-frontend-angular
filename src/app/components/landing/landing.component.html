@@ -2,7 +2,8 @@
     <div class="landing-content">
         <h1>Have a minute?</h1>
         <ng-container *ngIf="!showSpinner">
-            <button (click)="getLinkAndNavigate()">Take the minute!</button>
+            <button mat-flat-button color="primary" 
+                    (click)="getLinkAndNavigate()">Take the minute!</button>
         </ng-container>
         <ng-container *ngIf="showSpinner">
             <p>Finding your content{{dotsObservable | async}}</p>

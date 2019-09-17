@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { AuthService } from '../../services/auth.service';
+import { FirebaseUserModel } from '../../models/user.model';
 import { startWith } from 'rxjs/operators';
 
 @Component({
@@ -12,6 +13,7 @@ export class ToolbarComponent implements OnInit {
 
   userLoggedIn = false;
   userName = '';
+  userImage?: string;
 
   constructor(public userService: UserService,
     public authService: AuthService) { }
@@ -28,6 +30,8 @@ export class ToolbarComponent implements OnInit {
     this.userService.getCurrentUser().then((user) => {
       this.userLoggedIn = true;
       this.userName = user.displayName;
+      this.userImage = user.photoURL;
+      console.log(this.userImage);
       console.log(user);
     }, (e) => {
       this.userLoggedIn = false;
