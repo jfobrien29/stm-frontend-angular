@@ -7,7 +7,7 @@
           <input matInput type="email" placeholder="Email Address" 
                  formControlName="email">
         </mat-form-field>
-        <mat-form-field class="form-field">
+        <mat-form-field class="form-field" id="password-field">
           <input matInput formControlName="password" 
                  type="password" placeholder="Password" 
                  [errorStateMatcher]="passwordMatcher">
@@ -18,7 +18,7 @@
       </form>
     </div>
     <div class="row">
-      <button mat-flat-button type="button" color="primary" 
+      <button mat-flat-button id="google-login" type="button" color="warn" 
               (click)="tryGoogleLogin()">Login with Google</button>
     </div>
     <div class="row">
