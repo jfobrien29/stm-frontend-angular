@@ -15,8 +15,8 @@ export class LandingComponent implements OnDestroy {
   showSpinner = false;
   private readonly destroyed = new ReplaySubject(1);
 
-  dots = ['!', '!!', '!!!'];
-  dotsObservable = interval(500).pipe(map((value) => this.dots[value % this.dots.length]));
+  dots = ['!', '!!', '!!!', '!!'];
+  dotsObservable = interval(400).pipe(map((value) => this.dots[value % this.dots.length]));
 
   constructor(private readonly linkService: LinkService) { }
 

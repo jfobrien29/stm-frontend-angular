@@ -1,7 +1,17 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service'
-import { Router, Params } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, NgForm, FormControl, FormGroupDirective } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
+
+/** Error when invalid control is dirty, touched, or submitted. */
+export class PasswordErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && 
+      (control.dirty || control.touched || isSubmitted));
+  }
+}
 
 @Component({
   selector: 'page-login',
@@ -12,19 +22,20 @@ export class LoginComponent {
 
   loginForm: FormGroup;
   errorMessage: string = '';
+  passwordMatcher = new PasswordErrorStateMatcher();
 
   constructor(
-    public authService: AuthService,
-    private router: Router,
-    private fb: FormBuilder
+    private readonly authService: AuthService,
+    private readonly router: Router,
+    private readonly fb: FormBuilder
   ) {
     this.createForm();
   }
 
-  createForm() {
+  private createForm() {
     this.loginForm = this.fb.group({
       email: ['', Validators.required ],
-      password: ['',Validators.required]
+      password: ['', Validators.required]
     });
   }
 

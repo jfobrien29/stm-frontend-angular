@@ -3,20 +3,23 @@
   <div>
     <div class="row">
       <form [formGroup]="loginForm">
-        <div class="form-group">
-          <label>Email address</label>
-          <input type="email" formControlName="email" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>Password</label>
-          <input type="password" formControlName="password" class="form-control">
-          <label class="error">{{errorMessage}}</label>
-        </div>
-        <button type="submit" (click)="tryLogin(loginForm.value)">Login</button>
+        <mat-form-field class="form-field">
+          <input matInput type="email" placeholder="Email Address" 
+                 formControlName="email">
+        </mat-form-field>
+        <mat-form-field class="form-field">
+          <input matInput formControlName="password" 
+                 type="password" placeholder="Password" 
+                 [errorStateMatcher]="passwordMatcher">
+        </mat-form-field>
+        <p class="error">{{errorMessage}}</p>
+        <button mat-flat-button type="submit" color="primary" 
+                (click)="tryLogin(loginForm.value)">Login</button>
       </form>
     </div>
     <div class="row">
-      <button type="button" (click)="tryGoogleLogin()">Login with Google</button>
+      <button mat-flat-button type="button" color="primary" 
+              (click)="tryGoogleLogin()">Login with Google</button>
     </div>
     <div class="row">
       <p>No account yet? <a routerLink="/register">Create an account</a></p>

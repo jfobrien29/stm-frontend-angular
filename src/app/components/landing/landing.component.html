@@ -3,10 +3,11 @@
         <h1>Have a minute?</h1>
         <ng-container *ngIf="!showSpinner">
             <button mat-flat-button color="primary" 
-                    (click)="getLinkAndNavigate()">Take the minute!</button>
+                    (click)="getLinkAndNavigate()">Use your minute!</button>
         </ng-container>
         <ng-container *ngIf="showSpinner">
-            <p>Finding your content{{dotsObservable | async}}</p>
+            <p>{{dotsObservable | async}}Sky's the limit
+                when you use your minute{{dotsObservable | async}}</p>
         </ng-container>
     </div>
 </div>
