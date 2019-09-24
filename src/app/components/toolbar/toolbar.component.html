@@ -4,8 +4,11 @@
     <div class="spacer"></div>
 
     <ng-container *ngIf="userLoggedIn">
-        <img class="user-image" [src]="userImage" *ngIf="userImage" alt="User image">
-        <img class="user-image" src="https://via.placeholder.com/400x300" *ngIf="!userImage" alt="User image">
+        <img class="user-image" *ngIf="userImage"
+             [src]="userImage" alt="User image" routerLink="/user">
+        <img class="user-image" *ngIf="!userImage"
+             src="https://via.placeholder.com/400x300"  
+             alt="User image" routerLink="/user">
         <button mat-button id="logout" (click)="logout()" routerLink="">Logout</button>
     </ng-container>
     <ng-container *ngIf="!userLoggedIn">
