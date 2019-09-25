@@ -7,7 +7,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
+import { MatDividerModule } from '@angular/material/divider';
+
 
 import { environment } from '../environments/environment';
 
@@ -49,6 +51,7 @@ import { UserResolver } from './components/user/user.resolver';
     MatToolbarModule,
     MatIconModule,
     MatInputModule,
+    MatDividerModule,
   ],
   providers: [LinkService, AuthGuard, UserResolver, UserService, AuthService, FirebaseService],
   bootstrap: [AppComponent]

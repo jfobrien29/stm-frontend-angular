@@ -1,20 +1,75 @@
+.user-container {
+  display: block;
+  max-width: 400px;
+  width: 50%;
+  margin: 0 auto;
+}
+
 .header{
   text-align: center;
   font-size: 30px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
-.row{
-  margin-top: 10px;
+.header-card {
+  display: flex;
+  border: 1px black solid;
+  border-radius: 5px;
+  padding: 5px 0;
+
+  img {
+    vertical-align: middle;
+    margin: auto 10px;
+  }
+}
+
+.info-card {
+  margin: 10px 0;
+  display: grid;
+  grid-template-columns: 160px auto;
+  grid-auto-rows: 30px;
+  grid-row-gap: 2px;
+
+  .field {
+    text-align: right;
+    font-weight: bolder;
+  }
+
+  .cell {
+    margin: auto 10px auto 0;
+  }
+}
+
+.preferences-card {
+  margin: 10px 0;
+  display: grid;
+  grid-template-columns: 160px auto;
+  grid-auto-rows: auto;
+  
+  .field {
+    text-align: right;
+    font-weight: bolder;
+    margin: auto 10px auto 0;
+  }
 }
 
 .user-image {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   vertical-align: middle;
   border-radius: 50%;
 }
 
-.card {
-  width: 20rem;
+.btn-card {
+  display: flex;
+  margin: 10px 0;
+  align-items: center;
+}
+
+.btn {
+  margin: 0 10px;
+}
+
+.spacer {
+  flex: 1 1 auto;
 }

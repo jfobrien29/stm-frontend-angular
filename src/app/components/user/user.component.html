@@ -1,12 +1,43 @@
-<h1 class="header">Logged In User Page</h1>
-<div class="row flex-container">
-  <div class="card">
-    <img class="card-img-top user-image" [src]="user.image" *ngIf="user.image" alt="User image">
-    <img class="card-img-top user-image" src="https://via.placeholder.com/400x300" *ngIf="!user.image" alt="User image">
-    <div *ngIf='user.provider != "password"' class="card-body">
-      <h4 class="card-title">{{user.name}}</h4>
-    </div>
-    <div *ngIf='user.provider == "password"' class="card-body">
+<div class="user-container">
+  <h1 class="header">Current User Information</h1>
+  <div class="header-card">
+    <img class="user-image" *ngIf="user.image" [src]="user.image"  alt="User image">
+    <img class="user-image" *ngIf="!user.image" src="https://via.placeholder.com/400x300" alt="User image">
+    <ng-container *ngIf='user.provider != "password"'>
+      <h4>{{user.name}}</h4>
+    </ng-container>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="info-card">
+      <!-- Time since user signed up -->
+      <div class="field cell">User Since:</div>
+      <div class="cell">October 16th, 2019</div>
+
+      <!-- Times user has clicked the button -->
+      <div class="field cell">Times Clicked:</div>
+      <div class="cell">51</div>
+
+      <!-- Time spend reading articles -->
+      <div class="field cell">Reading Time (Min):</div>
+      <div class="cell">500</div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="preferences-card">
+    <div class="field cell">Learning Goals:</div>
+    <div>Software Development, Entrepreneurship</div>
+  </div>
+  <mat-divider></mat-divider>
+
+  <div class="btn-card">
+    <div class="spacer"></div>
+    <button mat-flat-button class="btn"
+            color="primary" routerLink="/">Home</button>
+
+    <button mat-flat-button class="btn"
+            color="warn" (click)="logout()">Logout</button>
+    <div class="spacer"></div>
+  </div>
+    <!-- <div *ngIf='user.provider == "password"'>
       <form [formGroup]="profileForm">
         <div class="form-group">
           <label>Your name</label>
@@ -14,6 +45,6 @@
         </div>
       </form>
       <a (click)="save(profileForm.value)" class="btn btn-primary">Save</a>
-    </div>
-  </div>
+    </div> -->
+
 </div>
