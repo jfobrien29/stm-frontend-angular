@@ -14,6 +14,7 @@ export class ToolbarComponent implements OnInit {
   userLoggedIn = false;
   userName = '';
   userImage?: string;
+  private uid = '';
 
   constructor(public userService: UserService,
     public authService: AuthService) { }
@@ -31,11 +32,13 @@ export class ToolbarComponent implements OnInit {
       this.userLoggedIn = true;
       this.userName = user.displayName;
       this.userImage = user.photoURL;
-      console.log(this.userImage);
+      this.uid = user.uid;
       console.log(user);
     }, (e) => {
       this.userLoggedIn = false;
       this.userName = '';
+      this.userImage = '';
+      this.uid = '';
     });
   }
 
