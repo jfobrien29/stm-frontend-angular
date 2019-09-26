@@ -1,23 +1,26 @@
-<h1 class="header">Create an account with Email or Google Account</h1>
+<h1 class="header">Register with an Email or a Google Account</h1>
 <div class="flex-container">
   <div>
     <div class="row">
       <form [formGroup]="registerForm">
-        <div class="form-group">
-          <label>Email address</label>
-          <input type="email" formControlName="email" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>Password</label>
-          <input type="password" class="form-control" formControlName="password">
-          <label class="error">{{errorMessage}}</label>
-          <label class="success">{{successMessage}}</label>
-        </div>
-        <button type="submit" (click)="tryRegister(registerForm.value)" class="btn btn-default">Register</button>
+        <mat-form-field class="form-field">
+          <input matInput type="email" placeholder="Email Address" 
+                  formControlName="email">
+        </mat-form-field>
+        <mat-form-field class="form-field" id="password-field">
+          <input matInput formControlName="password" 
+                  type="password" placeholder="Password" 
+                  [errorStateMatcher]="passwordMatcher">
+        </mat-form-field>
+        <p class="error">{{errorMessage}}</p>
+        <p class="success">{{successMessage}}</p>
+        <button mat-flat-button id="google-login" color="primary" type="submit" 
+                (click)="tryRegister(registerForm.value)">Register</button>
       </form>
     </div>
     <div class="row">
-      <button type="button" class="btn btn-danger btn-block" (click)="tryGoogleLogin()">Register with Google</button>
+      <button mat-flat-button color="warn" type="button" 
+              (click)="tryGoogleLogin()">Register with Google</button>
     </div>
     <div class="row">
       <p>Already have an account? <a routerLink="/login">Login</a></p>
