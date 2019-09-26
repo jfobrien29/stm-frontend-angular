@@ -1,5 +1,6 @@
 <div class="flex-container middle">
     <div class="landing-content">
+        <div class="spacer"></div>
         <h1>Have a minute?</h1>
         <ng-container *ngIf="!showSpinner">
             <button mat-flat-button color="primary" 
@@ -9,5 +10,6 @@
             <p>{{dotsObservable | async}}Sky's the limit
                 when you use your minute{{dotsObservable | async}}</p>
         </ng-container>
+        <div class="spacer bottom"></div>
     </div>
 </div>
